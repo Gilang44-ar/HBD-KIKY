@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun Cinta</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fffaf2;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff3cd;
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px dashed #ff9f1c;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .slide-text {
+      font-size: 1.4em;
+      color: #6c5b7b;
+      line-height: 1.6;
+      min-height: 120px;
+    }
+
+    h1 {
+      color: #d35400;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    /* Falling flower */
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://i.ibb.co/4TKMYcZ/sunflower.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container pesan -->
+  <div class="container">
+    <h1>Selamat Ulang Tahun 🌻</h1>
+    <div class="slide-text" id="slide"></div>
+  </div>
+
+  <!-- Musik -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Browsermu tidak mendukung musik.
+  </audio>
+
+  <!-- Efek bunga jatuh -->
+  <script>
+    // Bunga jatuh
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * window.innerWidth + 'px';
+      flower.style.animationDuration = (4 + Math.random() * 5) + 's';
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
+    }
+
+    setInterval(createFlower, 300);
+
+    // Slideshow teks romantis
+    const slides = [
+      "Hari ini kamu genap 17 tahun 🎉",
+      "Usiamu sedang mekar, seperti bunga matahari di pagi hari 🌻",
+      "Terima kasih sudah hadir di hidupku...",
+      "Dengan tawa, cerita, dan kehangatan yang nggak pernah habis 💛",
+      "Aku nggak butuh hari istimewa...",
+      "...karena setiap hari bersamamu itu spesial",
+      "Selamat ulang tahun, cinta...",
+      "Aku janji akan terus sayang kamu, jaga kamu, dan temani kamu selalu 🤍"
+    ];
+
+    let index = 0;
+    const slideBox = document.getElementById("slide");
+
+    function showNextSlide() {
+      slideBox.innerText = slides[index];
+      index = (index + 1) % slides.length;
+    }
+
+    showNextSlide();
+    setInterval(showNextSlide, 3500); // ganti tiap 3.5 detik
+  </script>
+
+</body>
+</html>
